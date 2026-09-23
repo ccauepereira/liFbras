@@ -1,0 +1,238 @@
+.pagina-praticar__apresentacao {
+  margin-bottom: var(--espaco-md);
+}
+
+.pagina-praticar__titulo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cor-texto);
+  margin-bottom: var(--espaco-xs);
+}
+
+.pagina-praticar__descricao {
+  font-size: var(--fonte-corpo);
+  line-height: 1.45;
+  color: var(--cor-texto-secundario);
+}
+
+/* Palco visualizador da câmera */
+.pagina-praticar__palco-container {
+  margin-bottom: var(--espaco-md);
+}
+
+.pagina-praticar__palco {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 320px;
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+
+.pagina-praticar__video,
+.pagina-praticar__marcadores {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.pagina-praticar__video {
+  display: none;
+}
+
+.pagina-praticar__marcadores {
+  pointer-events: none;
+}
+
+.pagina-praticar__palco--ativo .pagina-praticar__video {
+  display: block;
+}
+
+/* Cantoneiras de enquadramento da câmera */
+.palco-guia {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: rgba(255, 255, 255, 0.85);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.palco-guia--superior-esquerdo {
+  top: 16px;
+  left: 16px;
+  border-width: 3px 0 0 3px;
+  border-top-left-radius: 8px;
+}
+
+.palco-guia--superior-direito {
+  top: 16px;
+  right: 16px;
+  border-width: 3px 3px 0 0;
+  border-top-right-radius: 8px;
+}
+
+.palco-guia--inferior-esquerdo {
+  bottom: 16px;
+  left: 16px;
+  border-width: 0 0 3px 3px;
+  border-bottom-left-radius: 8px;
+}
+
+.palco-guia--inferior-direito {
+  bottom: 16px;
+  right: 16px;
+  border-width: 0 3px 3px 0;
+  border-bottom-right-radius: 8px;
+}
+
+.pagina-praticar__silhueta {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.pagina-praticar__pilula-posicao {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #0F172A;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+}
+
+.pagina-praticar__aviso-status {
+  text-align: center;
+  font-size: var(--fonte-legenda);
+  color: var(--cor-texto-secundario);
+  margin-top: var(--espaco-xs);
+}
+
+/* Card de Passos de Instrução */
+.pagina-praticar__passos-card {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: var(--espaco-md);
+  margin-bottom: var(--espaco-md);
+}
+
+.pagina-praticar__lista-passos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-sm);
+}
+
+.pagina-praticar__passo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-sm);
+}
+
+.pagina-praticar__passo-numero {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--cor-primaria-hover);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pagina-praticar__passo-texto {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--cor-texto);
+}
+
+/* Ação Primária */
+.pagina-praticar__acao-container {
+  margin-bottom: var(--espaco-md);
+}
+
+.pagina-praticar__botao-principal {
+  width: 100%;
+  height: 50px;
+  background-color: var(--cor-primaria-hover);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--raio-md);
+  font-size: 0.98rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-sm);
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
+}
+
+.pagina-praticar__botao-principal:hover {
+  background-color: #115E59;
+}
+
+.pagina-praticar__botao-principal:active {
+  transform: scale(0.99);
+}
+
+.pagina-praticar__botao-principal:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.pagina-praticar__botao-principal--secundario {
+  background-color: #334155;
+  box-shadow: 0 2px 8px rgba(51, 65, 85, 0.2);
+}
+
+.pagina-praticar__botao-principal--secundario:hover {
+  background-color: #1E293B;
+}
+
+/* Nota de Privacidade */
+.pagina-praticar__privacidade-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espaco-sm);
+  padding: var(--espaco-sm) var(--espaco-md);
+  background-color: var(--cor-primaria-suave);
+  border: 1px solid #CCFBF1;
+  border-radius: var(--raio-md);
+}
+
+.pagina-praticar__privacidade-icone {
+  color: var(--cor-primaria);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pagina-praticar__privacidade-texto {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--cor-texto-secundario);
+}

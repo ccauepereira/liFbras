@@ -1,0 +1,46 @@
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espaco-sm) 0 var(--espaco-md);
+  margin-bottom: var(--espaco-sm);
+}
+
+.cabecalho__marca {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-sm);
+}
+
+.cabecalho__logo-icone {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.cabecalho__textos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.cabecalho__nome {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cor-texto);
+}
+
+.cabecalho__nome-destaque {
+  color: var(--cor-primaria);
+}
+
+.cabecalho__lema {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+

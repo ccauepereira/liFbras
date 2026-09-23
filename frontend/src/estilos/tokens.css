@@ -1,0 +1,43 @@
+:root {
+  /* Colors */
+  --cor-primaria: #0D9488;
+  --cor-primaria-hover: #0F766E;
+  --cor-primaria-suave: #F0FDFA;
+  --cor-primaria-acento: #14B8A6;
+  --cor-fundo: #FFFFFF;
+  --cor-superficie: #F8FAFC;
+  --cor-texto: #0F172A;
+  --cor-texto-secundario: #475569;
+  --cor-borda: #E2E8F0;
+  --cor-sucesso: #16A34A;
+  --cor-aviso: #D97706;
+  --cor-info: #2563EB;
+
+  /* Typography */
+  --fonte-familia: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --fonte-titulo-pagina: 1.5rem;
+  --fonte-titulo-secao: 1.2rem;
+  --fonte-titulo-cartao: 1rem;
+  --fonte-corpo: 0.938rem;
+  --fonte-legenda: 0.813rem;
+
+  /* Spacing */
+  --espaco-xs: 0.25rem;
+  --espaco-sm: 0.5rem;
+  --espaco-md: 1rem;
+  --espaco-lg: 1.5rem;
+  --espaco-xl: 2rem;
+
+  /* Radius */
+  --raio-sm: 6px;
+  --raio-md: 12px;
+  --raio-lg: 16px;
+
+  /* Shadows */
+  --sombra-sutil: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  /* Layout */
+  --largura-maxima: 960px;
+  --altura-nav: 64px;
+}
+

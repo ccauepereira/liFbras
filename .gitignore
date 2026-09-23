@@ -1,0 +1,74 @@
+# Internal project and agent documentation
+docs/
+.agents/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Raw references and PDFs
+*.pdf
+apostilas/
+referencias/
+
+# Frontend local/build files
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python environments/cache
+.venv/
+venv/
+backend/.venv/
+backend/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Dataset storage (keep versioned dados/ application content)
+dataset/
+datasets/
+dados_brutos/
+ml/datasets/
+ml/dados_brutos/
+
+# Training artifacts and generated numerical data
+checkpoints/
+ml/checkpoints/
+runs/
+wandb/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npy
+*.npz
+
+# Temporary/cache/log files
+.cache/
+tmp/
+temp/
+*.log
+
+# Generic dependency/build output
+node_modules/
+dist/
+
+# Editor and operating-system noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local agent/tool state
+.gemini/
+.antigravity/
+
+*.swp

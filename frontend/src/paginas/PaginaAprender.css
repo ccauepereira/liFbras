@@ -1,0 +1,195 @@
+.pagina-aprender__apresentacao {
+  margin-bottom: var(--espaco-lg);
+}
+
+.pagina-aprender__titulo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cor-texto);
+  margin-bottom: var(--espaco-sm);
+}
+
+.pagina-aprender__descricao {
+  font-size: var(--fonte-corpo);
+  line-height: 1.45;
+  color: var(--cor-texto-secundario);
+  max-width: 560px;
+}
+
+.pagina-aprender__secao-categorias {
+  margin-bottom: var(--espaco-lg);
+}
+
+.pagina-aprender__grade {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espaco-md);
+}
+
+@media (min-width: 720px) {
+  .pagina-aprender__grade {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cartao-categoria {
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: var(--espaco-sm);
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  box-shadow: var(--sombra-sutil);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.cartao-categoria:hover,
+.cartao-categoria:focus-visible {
+  border-color: var(--cor-primaria-acento);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.08);
+}
+
+.cartao-categoria__visual {
+  background: var(--cor-superficie);
+  border-radius: var(--raio-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 132px;
+}
+
+.cartao-categoria__visual img {
+  width: 100%;
+  height: 132px;
+  object-fit: contain;
+  display: block;
+}
+
+.cartao-categoria__rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espaco-sm) var(--espaco-xs) var(--espaco-xs);
+}
+
+.cartao-categoria__textos {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartao-categoria__titulo {
+  font-size: var(--fonte-titulo-cartao);
+  font-weight: 700;
+  color: var(--cor-texto);
+  line-height: 1.25;
+}
+
+.cartao-categoria__contagem {
+  font-size: var(--fonte-legenda);
+  color: var(--cor-texto-secundario);
+  margin-top: 2px;
+}
+
+.cartao-categoria__seta {
+  color: var(--cor-texto-secundario);
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.cartao-categoria:hover .cartao-categoria__seta,
+.cartao-categoria:focus-visible .cartao-categoria__seta {
+  opacity: 1;
+  transform: translateX(2px);
+  color: var(--cor-primaria);
+}
+
+.pagina-categoria__voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-xs);
+  min-height: 48px;
+  margin-bottom: var(--espaco-lg);
+  font-weight: 700;
+}
+
+.pagina-categoria__cabecalho {
+  margin-bottom: var(--espaco-lg);
+}
+
+.pagina-categoria__etiqueta {
+  display: inline-block;
+  margin-bottom: var(--espaco-sm);
+  color: var(--cor-primaria-hover);
+  font-size: var(--fonte-legenda);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pagina-categoria__visuais {
+  display: grid;
+  gap: var(--espaco-md);
+  margin-bottom: var(--espaco-lg);
+}
+
+.pagina-categoria__figura {
+  margin: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  overflow: hidden;
+  background: var(--cor-superficie);
+}
+
+.pagina-categoria__figura img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pagina-categoria__figura figcaption {
+  padding: var(--espaco-sm) var(--espaco-md);
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-legenda);
+}
+
+.pagina-categoria__notas,
+.pagina-categoria__itens {
+  margin-bottom: var(--espaco-lg);
+}
+
+.pagina-categoria__notas h2,
+.pagina-categoria__itens h2 {
+  margin-bottom: var(--espaco-sm);
+}
+
+.pagina-categoria__notas ul,
+.pagina-categoria__itens ul {
+  display: grid;
+  gap: var(--espaco-sm);
+  padding-left: 1.25rem;
+  color: var(--cor-texto-secundario);
+}
+
+.pagina-categoria__itens li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pagina-categoria__itens strong {
+  color: var(--cor-texto);
+}
+
+.pagina-aprender__fontes {
+  padding-top: var(--espaco-md);
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-legenda);
+  line-height: 1.5;
+}

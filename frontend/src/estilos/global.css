@@ -1,0 +1,90 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--fonte-familia);
+  font-size: var(--fonte-corpo);
+  line-height: 1.5;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible for keyboard accessibility */
+:focus-visible {
+  outline: 3px solid var(--cor-primaria-acento);
+  outline-offset: 2px;
+  border-radius: var(--raio-sm);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* App layout */
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagina {
+  flex: 1;
+  padding: var(--espaco-md) var(--espaco-md);
+  padding-bottom: calc(var(--altura-nav) + var(--espaco-lg) + env(safe-area-inset-bottom, 0px));
+  width: 100%;
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+}
+
+/* Utility for sr-only (screen reader only) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Shared styles */
+h1 {
+  font-size: var(--fonte-titulo-pagina);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--fonte-titulo-secao);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+

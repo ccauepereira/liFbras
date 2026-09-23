@@ -1,0 +1,148 @@
+{
+  "categorias": [
+    {
+      "id": "alfabeto-manual",
+      "titulo": "Alfabeto Manual",
+      "categoria": "Datilologia",
+      "resumo": "26 letras",
+      "descricao": "A datilologia, também chamada de alfabeto manual, soletra palavras que ainda não têm um sinal correspondente.",
+      "notas": [
+        "Pode ser usada para nomes de pessoas, nomes próprios, localidades, empréstimos linguísticos e outros termos sem sinal-termo correspondente.",
+        "A datilologia complementa a Libras. Libras é uma língua visual-espacial com estrutura própria, e não uma reprodução gestual do português."
+      ],
+      "itens": [
+        {
+          "id": "datilologia",
+          "titulo": "Quando usar",
+          "descricao": "Soletrar um nome, uma localidade ou um termo sem sinal correspondente."
+        }
+      ],
+      "imagens": [
+        {
+          "arquivo": "/conteudo/alfabeto-manual.png",
+          "alt": "Quadro visual do alfabeto manual de Libras, com as letras de A a Z representadas pelas mãos.",
+          "fonte": {
+            "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+            "pagina": 8
+          }
+        }
+      ],
+      "fontes": [
+        {
+          "documento": "Apostila de Libras 1 — Curso de LIBRAS online",
+          "pagina": 20
+        },
+        {
+          "documento": "Apostila de Libras 1 — Curso de LIBRAS online",
+          "pagina": 24
+        },
+        {
+          "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+          "pagina": 9
+        }
+      ]
+    },
+    {
+      "id": "saudacoes",
+      "titulo": "Saudações",
+      "categoria": "Saudações e despedidas",
+      "resumo": "10 expressões",
+      "descricao": "Expressões de saudação, cortesia e despedida apresentadas no material introdutório.",
+      "notas": [
+        "Observe o movimento e a expressão corporal nas imagens; o quadro é uma referência visual para estudo."
+      ],
+      "itens": [
+        { "id": "oi", "titulo": "Oi" },
+        { "id": "bom-boa-bem", "titulo": "Bom / Boa / Bem" },
+        { "id": "dia", "titulo": "Dia" },
+        { "id": "tarde", "titulo": "Tarde" },
+        { "id": "noite", "titulo": "Noite" },
+        { "id": "tudo-bem", "titulo": "Tudo bem" },
+        { "id": "obrigado", "titulo": "Obrigado@" },
+        { "id": "por-nada", "titulo": "Por nada" },
+        { "id": "com-licenca-por-favor", "titulo": "Com licença / Por favor" },
+        { "id": "desculpe", "titulo": "Desculpe" }
+      ],
+      "imagens": [
+        {
+          "arquivo": "/conteudo/saudacoes-parte-1.png",
+          "alt": "Quadro visual com os sinais de Oi, Bom, Boa, Bem, Dia e Tarde.",
+          "fonte": {
+            "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+            "pagina": 12
+          }
+        },
+        {
+          "arquivo": "/conteudo/saudacoes-parte-2.png",
+          "alt": "Quadro visual com os sinais de Noite, Tudo bem, Obrigado, Por nada, Com licença, Por favor e Desculpe.",
+          "fonte": {
+            "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+            "pagina": 13
+          }
+        }
+      ],
+      "fontes": [
+        {
+          "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+          "pagina": 12
+        },
+        {
+          "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+          "pagina": 13
+        }
+      ]
+    },
+    {
+      "id": "numerais",
+      "titulo": "Numerais",
+      "categoria": "Formas numéricas",
+      "resumo": "Cardinais, quantidade e ordinais",
+      "descricao": "A forma de um numeral depende da situação e da intenção de quem sinaliza.",
+      "notas": [
+        "Do 1 ao 10, as representações de cardinais e quantidade são diferentes; a partir do 11, são iguais.",
+        "Do 1 ao 9, os ordinais têm a mesma configuração de mão dos cardinais, mas incluem movimento. A partir do 10, não há diferença entre eles."
+      ],
+      "itens": [
+        {
+          "id": "cardinais",
+          "titulo": "Cardinais",
+          "descricao": "Usados na série de números cardinais apresentada no quadro."
+        },
+        {
+          "id": "quantidade",
+          "titulo": "Quantidade",
+          "descricao": "De 1 a 10, a representação se diferencia dos cardinais."
+        },
+        {
+          "id": "ordinais",
+          "titulo": "Ordinais",
+          "descricao": "De 1º a 4º, o movimento é para cima e para baixo; de 5º a 9º, é para os lados."
+        }
+      ],
+      "imagens": [
+        {
+          "arquivo": "/conteudo/numerais.png",
+          "alt": "Quadro visual comparando as formas de numerais cardinais, de quantidade e ordinais de 1 a 10.",
+          "fonte": {
+            "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+            "pagina": 12
+          }
+        }
+      ],
+      "fontes": [
+        {
+          "documento": "Apostila de Libras 1 — Curso de LIBRAS online",
+          "pagina": 20
+        },
+        {
+          "documento": "Apostila de Libras 1 — Curso de LIBRAS online",
+          "pagina": 21
+        },
+        {
+          "documento": "Apostila de Libras 2 — Libras: Língua Brasileira de Sinais — Curso Básico (ENAP, 2019)",
+          "pagina": 12
+        }
+      ]
+    }
+  ]
+}
