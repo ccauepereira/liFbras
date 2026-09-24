@@ -1,0 +1,15 @@
+docs/
+.agents/
+backend/
+ml/
+dataset/
+datasets/
+*.pdf
+*.zip
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.env
+*.log

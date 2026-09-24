@@ -86,6 +86,7 @@ function PaginaCategoria({ categoria }) {
       </section>
 
       <ListaFontes fontes={categoria.fontes} />
+      <Link className="pagina-categoria__praticar" to="/praticar">Praticar com câmera</Link>
     </main>
   )
 }

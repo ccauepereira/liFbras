@@ -20,6 +20,7 @@ referencias/
 frontend/node_modules/
 frontend/dist/
 frontend/.vite/
+.vercel/
 
 # Python environments/cache
 .venv/
@@ -42,6 +43,9 @@ ml/dados_brutos/
 # Training artifacts and generated numerical data
 checkpoints/
 ml/checkpoints/
+ml/results/
+ml/plots/
+ml/logs/
 runs/
 wandb/
 *.pt
@@ -72,3 +76,4 @@ Thumbs.db
 .antigravity/
 
 *.swp
+.vercel

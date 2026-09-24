@@ -2,6 +2,14 @@
   margin-bottom: var(--espaco-md);
 }
 
+.pagina-praticar__etiqueta {
+  margin-bottom: var(--espaco-xs);
+  color: var(--cor-primaria-hover);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
 .pagina-praticar__titulo {
   font-size: 1.75rem;
   font-weight: 800;
@@ -15,6 +23,43 @@
   font-size: var(--fonte-corpo);
   line-height: 1.45;
   color: var(--cor-texto-secundario);
+}
+
+.pagina-praticar__seletor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: var(--espaco-md);
+  padding: 4px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  background: var(--cor-superficie);
+}
+
+.pagina-praticar__aba-visual {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-xs);
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--cor-texto-secundario);
+  font: inherit;
+  font-size: var(--fonte-legenda);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pagina-praticar__aba-visual--ativa {
+  background: var(--cor-fundo);
+  color: var(--cor-primaria-hover);
+  box-shadow: var(--sombra-sutil);
+}
+
+.pagina-praticar__visualizadores {
+  margin-bottom: var(--espaco-md);
 }
 
 /* Palco visualizador da câmera */
@@ -34,6 +79,10 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+
+.pagina-praticar__painel-3d {
+  min-width: 0;
 }
 
 .pagina-praticar__video,
@@ -120,11 +169,29 @@
   z-index: 3;
 }
 
-.pagina-praticar__aviso-status {
-  text-align: center;
-  font-size: var(--fonte-legenda);
+.pagina-praticar__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-xs);
+  min-height: 34px;
+  margin-top: var(--espaco-sm);
   color: var(--cor-texto-secundario);
-  margin-top: var(--espaco-xs);
+  font-size: var(--fonte-legenda);
+  text-align: center;
+}
+
+.pagina-praticar__status svg {
+  color: var(--cor-primaria-hover);
+  flex-shrink: 0;
+}
+
+.pagina-praticar__handedness {
+  margin-top: -2px;
+  color: var(--cor-primaria-hover);
+  font-size: var(--fonte-legenda);
+  font-weight: 700;
+  text-align: center;
 }
 
 /* Card de Passos de Instrução */
@@ -174,6 +241,71 @@
   margin-bottom: var(--espaco-md);
 }
 
+.pagina-praticar__referencia {
+  margin-bottom: var(--espaco-md);
+  padding: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  background: var(--cor-superficie);
+}
+
+.pagina-praticar__referencia-cabecalho {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--espaco-md);
+}
+
+.pagina-praticar__referencia h2 {
+  font-size: 1rem;
+}
+
+.pagina-praticar__referencia select {
+  min-height: 44px;
+  max-width: 52%;
+  padding: 0 var(--espaco-sm);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font: inherit;
+  font-size: var(--fonte-legenda);
+}
+
+.pagina-praticar__referencia-detalhe {
+  margin-top: var(--espaco-md);
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-legenda);
+}
+
+.pagina-praticar__referencia-detalhe summary,
+.pagina-praticar__explicacao summary,
+.pagina-praticar__pesquisa summary {
+  cursor: pointer;
+  color: var(--cor-texto);
+  font-weight: 700;
+}
+
+.pagina-praticar__referencia-detalhe img {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  margin: var(--espaco-sm) 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  object-fit: contain;
+  background: var(--cor-fundo);
+}
+
+.pagina-praticar__aprender {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: var(--espaco-sm);
+  font-weight: 700;
+  font-size: var(--fonte-legenda);
+}
+
 .pagina-praticar__botao-principal {
   width: 100%;
   height: 50px;
@@ -215,6 +347,8 @@
 }
 
 /* Nota de Privacidade */
+.pagina-praticar__privacidade { margin-bottom: var(--espaco-md); }
+
 .pagina-praticar__privacidade-card {
   display: flex;
   align-items: flex-start;
@@ -235,4 +369,50 @@
   font-size: 0.76rem;
   line-height: 1.45;
   color: var(--cor-texto-secundario);
+}
+
+.pagina-praticar__explicacao,
+.pagina-praticar__pesquisa {
+  margin-top: var(--espaco-md);
+  padding: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-legenda);
+  line-height: 1.5;
+}
+
+.pagina-praticar__explicacao summary {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-xs);
+}
+
+.pagina-praticar__explicacao p,
+.pagina-praticar__pesquisa p {
+  margin-top: var(--espaco-sm);
+}
+
+.pagina-praticar__pesquisa {
+  margin-bottom: var(--espaco-lg);
+  background: var(--cor-superficie);
+}
+
+@media (max-width: 719px) {
+  .pagina-praticar__painel--oculto {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .pagina-praticar__seletor {
+    display: none;
+  }
+
+  .pagina-praticar__visualizadores {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.9fr);
+    align-items: start;
+    gap: var(--espaco-md);
+  }
 }

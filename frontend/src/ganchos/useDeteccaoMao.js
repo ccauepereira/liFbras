@@ -22,12 +22,25 @@ export default function useDeteccaoMao() {
   const resultadoMaoRef = useRef(null)
   const [estadoCamera, setEstadoCamera] = useState('inativa')
   const [maoDetectada, setMaoDetectada] = useState(false)
+  const [maosDetectadas, setMaosDetectadas] = useState([])
 
   const atualizarMaoDetectada = useCallback((detectada) => {
     if (maoDetectadaRef.current !== detectada) {
       maoDetectadaRef.current = detectada
       setMaoDetectada(detectada)
     }
+  }, [])
+
+  const atualizarMaosDetectadas = useCallback((resultado) => {
+    const maos = resultado.landmarks.map((_, indice) => {
+      const nome = resultado.handedness?.[indice]?.[0]?.categoryName
+      return nome === 'Left' ? 'Mão esquerda' : nome === 'Right' ? 'Mão direita' : 'Mão detectada'
+    })
+    setMaosDetectadas((anteriores) => (
+      anteriores.length === maos.length && anteriores.every((mao, indice) => mao === maos[indice])
+        ? anteriores
+        : maos
+    ))
   }, [])
 
   const liberarRecursos = useCallback(() => {
@@ -40,6 +53,7 @@ export default function useDeteccaoMao() {
     detectorRef.current = null
     desenhoRef.current = null
     resultadoMaoRef.current = null
+    setMaosDetectadas([])
     ultimoTempoVideoRef.current = -1
 
     fluxoRef.current?.getTracks().forEach((trilha) => trilha.stop())
@@ -119,7 +133,7 @@ export default function useDeteccaoMao() {
       const visao = await FilesetResolver.forVisionTasks(URL_WASM)
       const detector = await HandLandmarker.createFromOptions(visao, {
         baseOptions: { modelAssetPath: URL_MODELO },
-        numHands: 1,
+        numHands: 2,
         runningMode: 'VIDEO',
       })
 
@@ -138,6 +152,7 @@ export default function useDeteccaoMao() {
           ultimoTempoVideoRef.current = video.currentTime
           resultadoMaoRef.current = resultado
           atualizarMaoDetectada(resultado.landmarks.length > 0)
+          atualizarMaosDetectadas(resultado)
           desenharResultado(resultado, video)
         }
 
@@ -158,12 +173,13 @@ export default function useDeteccaoMao() {
         setEstadoCamera('erro')
       }
     }
-  }, [atualizarMaoDetectada, desenharResultado, liberarRecursos])
+  }, [atualizarMaoDetectada, atualizarMaosDetectadas, desenharResultado, liberarRecursos])
 
   const desativarCamera = useCallback(() => {
     operacaoRef.current += 1
     liberarRecursos()
     atualizarMaoDetectada(false)
+    setMaosDetectadas([])
     setEstadoCamera('inativa')
   }, [atualizarMaoDetectada, liberarRecursos])
 
@@ -178,6 +194,7 @@ export default function useDeteccaoMao() {
     estadoCamera,
     iniciarCamera,
     maoDetectada,
+    maosDetectadas,
     resultadoMaoRef,
     videoRef,
   }

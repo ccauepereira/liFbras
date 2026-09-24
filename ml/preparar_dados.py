@@ -16,6 +16,7 @@ import numpy as np
 ROOT = "Landmarks/Libras-EQT-UECE (Hand Landmarks)/"
 DEFAULT_ZIP = Path("dataset/libras-eqt-uece/Landmarks.zip")
 DEFAULT_OUTPUT = Path("dataset/libras-eqt-uece/mvp-hand-landmarks.npz")
+DEFAULT_CLASSES = ["2_Sim", "7_Quero", "92_Energia", "110_Menos", "111_Mais"]
 
 
 def iter_landmark_files(archive: ZipFile):
@@ -124,7 +125,7 @@ def prepare_subset(archive_path: Path, output_path: Path, selected_classes: list
 
     if not sequences:
         raise ValueError("no files selected")
-    label_names = sorted(set(labels))
+    label_names = [class_name for class_name in selected_classes if class_name in set(labels)]
     label_ids = np.asarray([label_names.index(label) for label in labels], dtype=np.int64)
     offsets = np.zeros(len(sequences) + 1, dtype=np.int64)
     offsets[1:] = np.cumsum([sequence.shape[0] for sequence in sequences])
@@ -166,7 +167,8 @@ def main() -> None:
     args = parse_args()
     if not args.dataset_zip.is_file():
         raise SystemExit(f"dataset archive not found: {args.dataset_zip}")
-    result = inspect_archive(args.dataset_zip) if args.inspect else prepare_subset(args.dataset_zip, args.output, args.classes)
+    selected_classes = args.classes or DEFAULT_CLASSES
+    result = inspect_archive(args.dataset_zip) if args.inspect else prepare_subset(args.dataset_zip, args.output, selected_classes)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

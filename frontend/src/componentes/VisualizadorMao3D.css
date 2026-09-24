@@ -1,0 +1,62 @@
+.visualizador-3d {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: var(--espaco-md);
+}
+
+.visualizador-3d__cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-sm);
+  margin-bottom: var(--espaco-sm);
+}
+
+.visualizador-3d__cabecalho h2 {
+  font-size: 1rem;
+}
+
+.visualizador-3d__etiqueta {
+  color: var(--cor-primaria-hover);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.visualizador-3d__reset {
+  min-height: 40px;
+  padding: 0 var(--espaco-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cor-primaria-hover);
+  background: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  font: inherit;
+  font-size: var(--fonte-legenda);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.visualizador-3d__canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 0.82;
+  background: #0F172A;
+  border-radius: var(--raio-md);
+  touch-action: none;
+  cursor: grab;
+}
+
+.visualizador-3d__canvas:active {
+  cursor: grabbing;
+}
+
+.visualizador-3d__ajuda {
+  margin-top: var(--espaco-sm);
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-legenda);
+  line-height: 1.4;
+}

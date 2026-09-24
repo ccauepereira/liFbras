@@ -193,3 +193,11 @@
   font-size: var(--fonte-legenda);
   line-height: 1.5;
 }
+
+.pagina-categoria__praticar {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin-top: var(--espaco-md);
+  font-weight: 700;
+}
