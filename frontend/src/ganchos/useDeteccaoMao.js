@@ -9,7 +9,7 @@ function limparCanvas(canvas) {
   contexto?.clearRect(0, 0, canvas.width, canvas.height)
 }
 
-export default function useDeteccaoMao() {
+export default function useDeteccaoMao({ onFrame } = {}) {
   const videoRef = useRef(null)
   const canvasRef = useRef(null)
   const fluxoRef = useRef(null)
@@ -20,9 +20,17 @@ export default function useDeteccaoMao() {
   const operacaoRef = useRef(0)
   const maoDetectadaRef = useRef(false)
   const resultadoMaoRef = useRef(null)
+  const onFrameRef = useRef(onFrame)
+  const fpsInicioRef = useRef(0)
+  const fpsContagemRef = useRef(0)
   const [estadoCamera, setEstadoCamera] = useState('inativa')
   const [maoDetectada, setMaoDetectada] = useState(false)
   const [maosDetectadas, setMaosDetectadas] = useState([])
+  const [fps, setFps] = useState(0)
+
+  useEffect(() => {
+    onFrameRef.current = onFrame
+  }, [onFrame])
 
   const atualizarMaoDetectada = useCallback((detectada) => {
     if (maoDetectadaRef.current !== detectada) {
@@ -53,6 +61,9 @@ export default function useDeteccaoMao() {
     detectorRef.current = null
     desenhoRef.current = null
     resultadoMaoRef.current = null
+    fpsInicioRef.current = 0
+    fpsContagemRef.current = 0
+    setFps(0)
     setMaosDetectadas([])
     ultimoTempoVideoRef.current = -1
 
@@ -128,6 +139,8 @@ export default function useDeteccaoMao() {
       fluxoRef.current = fluxo
       video.srcObject = fluxo
       await video.play()
+      fpsInicioRef.current = performance.now()
+      fpsContagemRef.current = 0
       setEstadoCamera('ativa')
 
       const visao = await FilesetResolver.forVisionTasks(URL_WASM)
@@ -143,14 +156,25 @@ export default function useDeteccaoMao() {
       }
 
       detectorRef.current = detector
+      fpsInicioRef.current = performance.now()
+      fpsContagemRef.current = 0
 
       const processarQuadro = () => {
         if (operacaoRef.current !== operacaoAtual || !detectorRef.current) return
 
         if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && video.currentTime !== ultimoTempoVideoRef.current) {
-          const resultado = detectorRef.current.detectForVideo(video, performance.now())
+          const timestampAtual = performance.now()
+          const resultado = detectorRef.current.detectForVideo(video, timestampAtual)
           ultimoTempoVideoRef.current = video.currentTime
           resultadoMaoRef.current = resultado
+          fpsContagemRef.current += 1
+          const tempoFps = timestampAtual - fpsInicioRef.current
+          if (tempoFps >= 1000) {
+            setFps(Math.round((fpsContagemRef.current * 1000) / tempoFps))
+            fpsInicioRef.current = timestampAtual
+            fpsContagemRef.current = 0
+          }
+          onFrameRef.current?.(resultado, timestampAtual)
           atualizarMaoDetectada(resultado.landmarks.length > 0)
           atualizarMaosDetectadas(resultado)
           desenharResultado(resultado, video)
@@ -192,6 +216,7 @@ export default function useDeteccaoMao() {
     canvasRef,
     desativarCamera,
     estadoCamera,
+    fps,
     iniciarCamera,
     maoDetectada,
     maosDetectadas,
