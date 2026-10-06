@@ -194,6 +194,13 @@
   text-align: center;
 }
 
+.pagina-praticar__fps {
+  margin-top: -2px;
+  color: var(--cor-texto-secundario);
+  font-size: 0.72rem;
+  text-align: center;
+}
+
 /* Card de Passos de Instrução */
 .pagina-praticar__passos-card {
   background-color: var(--cor-superficie);
@@ -344,6 +351,125 @@
 
 .pagina-praticar__botao-principal--secundario:hover {
   background-color: #1E293B;
+}
+
+.pagina-praticar__botao-gravar,
+.pagina-praticar__botao-novo,
+.pagina-praticar__controles-replay button {
+  min-height: 46px;
+  border: 1px solid var(--cor-primaria);
+  border-radius: var(--raio-md);
+  background: var(--cor-fundo);
+  color: var(--cor-primaria-hover);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pagina-praticar__botao-gravar {
+  width: 100%;
+  margin-top: var(--espaco-sm);
+}
+
+.pagina-praticar__botao-gravar:hover,
+.pagina-praticar__botao-novo:hover,
+.pagina-praticar__controles-replay button:hover {
+  background: var(--cor-primaria-suave);
+}
+
+.pagina-praticar__botao-gravar--parar {
+  border-color: #64748B;
+  color: #334155;
+}
+
+.pagina-praticar__gravacao-status {
+  margin-bottom: var(--espaco-md);
+  padding: var(--espaco-sm) var(--espaco-md);
+  border: 1px solid #99F6E4;
+  border-radius: var(--raio-md);
+  background: var(--cor-primaria-suave);
+  color: var(--cor-texto);
+  text-align: center;
+  font-weight: 700;
+}
+
+.pagina-praticar__ponto-gravacao {
+  color: #DC2626;
+}
+
+.pagina-praticar__contagem {
+  font-size: 1.1rem;
+}
+
+.pagina-praticar__replay {
+  margin-bottom: var(--espaco-md);
+  padding: var(--espaco-md);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  background: var(--cor-superficie);
+}
+
+.pagina-praticar__replay-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-sm);
+}
+
+.pagina-praticar__replay h2 {
+  font-size: 1rem;
+}
+
+.pagina-praticar__botao-novo {
+  padding: 0 var(--espaco-sm);
+  white-space: nowrap;
+  font-size: var(--fonte-legenda);
+}
+
+.pagina-praticar__resumo-gravacao {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espaco-sm);
+  margin: var(--espaco-md) 0;
+}
+
+.pagina-praticar__resumo-gravacao div {
+  padding: var(--espaco-sm);
+  border-radius: var(--raio-sm);
+  background: var(--cor-fundo);
+}
+
+.pagina-praticar__resumo-gravacao dt {
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-legenda);
+}
+
+.pagina-praticar__resumo-gravacao dd {
+  margin-top: 2px;
+  font-weight: 800;
+}
+
+.pagina-praticar__controles-replay {
+  display: flex;
+  gap: var(--espaco-sm);
+}
+
+.pagina-praticar__controles-replay button {
+  flex: 1;
+}
+
+.pagina-praticar__timeline {
+  display: grid;
+  gap: var(--espaco-xs);
+  margin-top: var(--espaco-md);
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-legenda);
+  font-weight: 700;
+}
+
+.pagina-praticar__timeline input {
+  width: 100%;
+  accent-color: var(--cor-primaria);
 }
 
 /* Nota de Privacidade */

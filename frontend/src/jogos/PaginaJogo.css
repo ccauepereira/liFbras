@@ -1,0 +1,41 @@
+.pagina-jogo { width: min(1040px, 100%); min-height: 100svh; margin: 0 auto; padding: calc(20px + env(safe-area-inset-top, 0px)) calc(20px + env(safe-area-inset-right, 0px)) calc(32px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px)); color: #0f172a; }
+.jogo__topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 18px 0 12px; }
+.jogo__voltar { min-height: 44px; display: inline-flex; align-items: center; color: #0f766e; font-weight: 750; text-decoration: none; }
+.jogo__rotulo, .jogo__marca { margin: 0; color: #0f766e; font-size: .73rem; font-weight: 850; letter-spacing: .14em; }
+.jogo__hud { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 10px; padding: 10px 16px; border: 1px solid #ccfbf1; border-radius: 14px; background: #f0fdfa; }
+.jogo__hud h1 { margin: 0; font-size: 1.2rem; }
+.jogo__hud p { margin: 0; white-space: nowrap; }
+.jogo__hud strong { font-variant-numeric: tabular-nums; }
+.jogo__area { position: relative; isolation: isolate; width: 100%; height: min(66svh, 640px); min-height: 320px; overflow: hidden; border-radius: 20px; background: #0f172a; }
+.jogo__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+.jogo__sombra { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgb(15 23 42 / 8%), rgb(15 23 42 / 20%)); pointer-events: none; }
+.jogo__cartao { position: absolute; z-index: 4; inset: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; border: 1px solid #ccfbf1; border-radius: 18px; background: #fff; text-align: center; }
+.jogo__cartao h1 { margin: 0; font-size: clamp(2rem, 7vw, 3.4rem); line-height: 1; }
+.jogo__cartao p { margin: 0; }
+.jogo__cartao .jogo__marca { font-size: .73rem; }
+.jogo__camera-status { color: #475569; }
+.jogo__lembrete-mao { color: #64748b; font-size: .9rem; }
+.jogo__cartao button { min-height: 50px; width: min(100%, 320px); padding: 12px 22px; border: 0; border-radius: 12px; background: #0f766e; color: #fff; font: inherit; font-size: 1.05rem; font-weight: 800; cursor: pointer; }
+.jogo__cartao button:disabled { opacity: .7; cursor: wait; }
+.jogo__cartao small { max-width: 420px; color: #64748b; line-height: 1.45; }
+.jogo__alvo { position: absolute; z-index: 2; box-sizing: border-box; width: var(--alvo-diametro); height: var(--alvo-diametro); transform: translate(-50%, -50%); border: 5px solid #fff; border-radius: 50%; background: #14b8a6; box-shadow: 0 0 0 4px #0f766e, 0 8px 22px rgb(15 23 42 / 35%); pointer-events: none; animation: jogo-alvo-entrada .16s ease-out both; }
+.jogo__alvo::before { position: absolute; inset: 17%; border: 4px solid #fff; border-radius: 50%; background: #f97316; content: ''; }
+.jogo__cursor { position: absolute; z-index: 3; display: none; width: 24px; height: 24px; transform: translate(-50%, -50%); border: 3px solid #fff; border-radius: 50%; background: #f97316; box-shadow: 0 0 0 3px #c2410c, 0 2px 10px rgb(15 23 42 / 50%); pointer-events: none; }
+.jogo__sem-mao { margin: 0 0 8px; padding: 7px 10px; border-radius: 9px; background: #f1f5f9; color: #334155; font-size: .88rem; font-weight: 700; text-align: center; }
+.jogo__acerto { position: absolute; z-index: 4; top: 18%; left: 50%; color: #fff; font-size: 2rem; font-weight: 900; text-shadow: 0 2px 8px #0f172a; pointer-events: none; animation: jogo-acerto .28s ease-out both; }
+.jogo__resultado { font-size: 1.25rem; }
+.jogo__resultado strong { color: #0f766e; font-size: 2rem; }
+.jogo__nota { margin: 12px 4px 0; color: #64748b; font-size: .9rem; text-align: center; }
+@keyframes jogo-alvo-entrada { from { opacity: .4; scale: .75; } to { opacity: 1; scale: 1; } }
+@keyframes jogo-acerto { from { opacity: 0; transform: translate(-50%, 8px) scale(.85); } 20% { opacity: 1; } to { opacity: 0; transform: translate(-50%, -12px) scale(1.05); } }
+@media (max-width: 640px) {
+  .pagina-jogo { padding: calc(14px + env(safe-area-inset-top, 0px)) calc(12px + env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) calc(12px + env(safe-area-inset-left, 0px)); }
+  .jogo__topo { margin: 12px 0 8px; }
+  .jogo__rotulo { max-width: 60%; font-size: .62rem; text-align: right; }
+  .jogo__hud { gap: 6px; padding: 10px 12px; }
+  .jogo__hud h1 { font-size: 1rem; }
+  .jogo__hud p { font-size: .92rem; }
+  .jogo__area { height: min(62svh, 560px); min-height: 300px; border-radius: 16px; }
+  .jogo__cartao { inset: 10px; gap: 12px; padding: 18px; }
+  .jogo__sem-mao { font-size: .8rem; }
+}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Cabecalho from '../componentes/Cabecalho'
 import VisualizadorMao3D from '../componentes/VisualizadorMao3D'
 import useDeteccaoMao from '../ganchos/useDeteccaoMao'
+import useGravacaoTemporal from '../ganchos/useGravacaoTemporal'
 import conteudo from '../../../dados/conteudo_libras.json'
 import './PaginaPraticar.css'
 
@@ -21,20 +22,29 @@ const mensagensCamera = {
   erro: 'Não foi possível iniciar a câmera. Tente novamente.',
 }
 
+function formatarTempo(tempoMs) {
+  return `${(tempoMs / 1000).toFixed(1)} s`
+}
+
 export default function PaginaPraticar() {
   const [painelAtivo, setPainelAtivo] = useState('camera')
   const [referenciaId, setReferenciaId] = useState(conteudo.categorias[0].id)
+  const gravacao = useGravacaoTemporal()
   const {
     canvasRef,
     desativarCamera,
     estadoCamera,
+    fps,
     iniciarCamera,
     maoDetectada,
     maosDetectadas,
     resultadoMaoRef,
     videoRef,
-  } = useDeteccaoMao()
+  } = useDeteccaoMao({ onFrame: gravacao.registrarFrame })
   const cameraAtiva = estadoCamera === 'ativa'
+  const replayAtivo = gravacao.estado === 'replaying'
+  const resultadoVisualizadorRef = replayAtivo ? gravacao.replayFrameRef : resultadoMaoRef
+  const visualizadorAtivo = cameraAtiva || replayAtivo
   const referencia = conteudo.categorias.find((categoria) => categoria.id === referenciaId) ?? conteudo.categorias[0]
   const quantidadeMaos = maosDetectadas.length
   const mensagemStatus = cameraAtiva
@@ -96,11 +106,12 @@ export default function PaginaPraticar() {
             <Hand size={18} aria-hidden="true" />
             <span>{mensagemStatus}</span>
           </div>
+          {cameraAtiva && <p className="pagina-praticar__fps">Captura: {fps} fps</p>}
           {cameraAtiva && quantidadeMaos > 0 && <p className="pagina-praticar__handedness">{maosDetectadas.join(' · ')}</p>}
         </div>
 
         <div className={`pagina-praticar__painel-3d ${painelAtivo !== '3d' ? 'pagina-praticar__painel--oculto' : ''}`}>
-          <VisualizadorMao3D resultadoMaoRef={resultadoMaoRef} cameraAtiva={cameraAtiva} />
+          <VisualizadorMao3D resultadoMaoRef={resultadoVisualizadorRef} cameraAtiva={visualizadorAtivo} />
         </div>
       </section>
 
@@ -125,7 +136,65 @@ export default function PaginaPraticar() {
             <span>{estadoCamera === 'solicitando' ? 'Ativando câmera' : 'Ativar câmera'}</span>
           </button>
         )}
+        {cameraAtiva && gravacao.estado !== 'countdown' && gravacao.estado !== 'recording' && (
+          <button type="button" className="pagina-praticar__botao-gravar" onClick={gravacao.iniciarCaptura}>
+            Gravar sinal
+          </button>
+        )}
+        {cameraAtiva && (gravacao.estado === 'countdown' || gravacao.estado === 'recording') && (
+          <button type="button" className="pagina-praticar__botao-gravar pagina-praticar__botao-gravar--parar" onClick={gravacao.pararCaptura}>
+            Parar gravação
+          </button>
+        )}
       </div>
+
+      {(gravacao.estado === 'countdown' || gravacao.estado === 'recording') && (
+        <section className="pagina-praticar__gravacao-status" role="status" aria-live="polite">
+          {gravacao.estado === 'countdown' ? (
+            <p className="pagina-praticar__contagem">Começando em {gravacao.contagem}…</p>
+          ) : (
+            <p><span className="pagina-praticar__ponto-gravacao" aria-hidden="true">●</span> Gravando — {formatarTempo(gravacao.duracaoMs)} — {gravacao.quantidadeFrames} frames</p>
+          )}
+        </section>
+      )}
+
+      {gravacao.sequencia && gravacao.estado !== 'countdown' && gravacao.estado !== 'recording' && (
+        <section className="pagina-praticar__replay" aria-labelledby="titulo-replay">
+          <div className="pagina-praticar__replay-cabecalho">
+            <div>
+              <p className="pagina-praticar__etiqueta">CAPTURA EM MEMÓRIA</p>
+              <h2 id="titulo-replay">Replay do sinal</h2>
+            </div>
+            <button type="button" className="pagina-praticar__botao-novo" onClick={gravacao.novaTentativa}>Nova tentativa</button>
+          </div>
+          <dl className="pagina-praticar__resumo-gravacao">
+            <div><dt>Duração</dt><dd>{formatarTempo(gravacao.duracaoMs)}</dd></div>
+            <div><dt>Frames</dt><dd>{gravacao.quantidadeFrames}</dd></div>
+            <div><dt>Máximo de mãos</dt><dd>{gravacao.maximoMaos}</dd></div>
+          </dl>
+          <div className="pagina-praticar__controles-replay" aria-label="Controles do replay">
+            {replayAtivo ? (
+              <button type="button" onClick={gravacao.pausar}>Pausar</button>
+            ) : (
+              <button type="button" onClick={gravacao.reproduzir}>Reproduzir</button>
+            )}
+            <button type="button" onClick={gravacao.reiniciarReplay}>Reiniciar</button>
+          </div>
+          <label className="pagina-praticar__timeline">
+            <span>Posição do replay: {formatarTempo(gravacao.posicaoReplayMs)}</span>
+            <input
+              type="range"
+              min="0"
+              max={gravacao.duracaoMs || 0}
+              step="1"
+              value={Math.min(gravacao.posicaoReplayMs, gravacao.duracaoMs)}
+              onChange={(evento) => gravacao.moverReplay(evento.target.value)}
+              aria-label="Posição temporal do replay"
+              disabled={!gravacao.duracaoMs}
+            />
+          </label>
+        </section>
+      )}
 
       <section className="pagina-praticar__referencia" aria-labelledby="titulo-referencia">
         <div className="pagina-praticar__referencia-cabecalho">

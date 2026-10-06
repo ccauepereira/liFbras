@@ -39,6 +39,8 @@ datasets/
 dados_brutos/
 ml/datasets/
 ml/dados_brutos/
+dados_coletados/
+ml/data/lifbras/
 
 # Training artifacts and generated numerical data
 checkpoints/
@@ -77,3 +79,4 @@ Thumbs.db
 
 *.swp
 .vercel
+.env*
