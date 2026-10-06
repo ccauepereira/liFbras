@@ -1,35 +1,54 @@
-.pagina-coleta { max-width: 1120px; margin: 0 auto; padding: 24px 20px 80px; }
+.pagina-coleta { width: min(1120px, 100%); margin: 0 auto; padding: 24px 20px 80px; }
 .coleta__intro { max-width: 720px; margin: 24px 0; }
 .coleta__intro h1 { margin: 6px 0 10px; }
 .coleta__intro p { color: var(--cor-texto-suave, #475569); }
 .coleta__eyebrow { color: #0f766e; font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
-.coleta__consent { display: flex; gap: 12px; align-items: flex-start; padding: 16px; border: 1px solid #99f6e4; border-radius: 14px; background: #f0fdfa; color: #134e4a; }
+.coleta__modos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.coleta__modos article, .coleta__aviso-tecnico, .coleta__referencia, .coleta__form, .coleta__dados, .coleta__revisao { min-width: 0; display: grid; gap: 14px; margin-top: 18px; padding: 20px; border: 1px solid #dbe4e8; border-radius: 16px; background: white; }
+.coleta__modos article { margin: 0; }
+.coleta__modos h2, .coleta__aviso-tecnico h2, .coleta__referencia h2, .coleta__revisao h2 { margin: 0; }
+.coleta__modos p, .coleta__aviso-tecnico p { color: #475569; }
+.coleta__consent { display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; padding: 16px; border: 1px solid #99f6e4; border-radius: 14px; background: #f0fdfa; color: #134e4a; }
 .coleta__consent p { margin: 0; }
-.coleta__form, .coleta__dados, .coleta__revisao { display: grid; gap: 16px; margin-top: 20px; padding: 20px; border: 1px solid #dbe4e8; border-radius: 16px; background: #fff; }
-.coleta__form { grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr); }
-.coleta__form label, .coleta__revisao label { display: grid; gap: 6px; font-weight: 700; }
-.coleta__form input, .coleta__form select, .coleta__revisao select { min-height: 46px; padding: 10px 12px; border: 1px solid #94a3b8; border-radius: 10px; background: #fff; font: inherit; }
+.coleta__form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.coleta__form label, .coleta__revisao label { min-width: 0; display: grid; gap: 6px; font-weight: 700; }
+.coleta__form input, .coleta__form select, .coleta__revisao select { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid #94a3b8; border-radius: 10px; background: white; font: inherit; }
 .coleta__form small { grid-column: 1; color: #64748b; }
 .coleta__tentativa { display: grid; gap: 5px; align-content: center; margin: 0; }
-.coleta__tentativas { display: flex; flex-wrap: wrap; gap: 12px; grid-column: 1 / -1; color: #64748b; }
+.coleta__tentativas { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; color: #64748b; }
 .coleta__tentativas .feito { color: #0f766e; font-weight: 800; }
-.coleta__camera { margin-top: 20px; padding: 20px; border-radius: 16px; background: #0f172a; color: #f8fafc; }
-.coleta__palco { position: relative; min-height: 320px; display: grid; place-items: center; overflow: hidden; border-radius: 12px; background: #1e293b; }
-.coleta__palco video, .coleta__palco canvas { position: absolute; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+.coleta__referencia { scroll-margin-top: 16px; }
+.coleta__bloqueio { margin: 0; padding: 14px; border-radius: 10px; background: #fff7ed; color: #9a3412; font-weight: 700; }
+.coleta__referencia-media, .coleta__sequencia img { display: block; max-width: 100%; max-height: 440px; object-fit: contain; margin-inline: auto; border-radius: 10px; }
+.coleta__sequencia { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.coleta__origem { color: #64748b; font-size: .9rem; }
+.coleta__camera { min-width: 0; margin-top: 18px; padding: 16px; border-radius: 16px; background: #0f172a; color: #f8fafc; }
+.coleta__palco { position: relative; width: 100%; aspect-ratio: 4 / 3; max-height: 620px; min-height: 260px; display: grid; place-items: center; overflow: hidden; border-radius: 12px; background: #1e293b; }
+.coleta__palco video, .coleta__palco canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
 .coleta__palco canvas { pointer-events: none; }
-.coleta__palco p { position: relative; z-index: 1; color: #cbd5e1; }
-.coleta__acoes, .coleta__replay, .coleta__revisao-acoes, .coleta__dados-acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-.coleta__acoes button, .coleta__replay button, .coleta__revisao-acoes button, .coleta__dados-acoes button { min-height: 46px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 15px; border: 1px solid #0f766e; border-radius: 10px; background: #0f766e; color: white; font: inherit; font-weight: 700; cursor: pointer; }
-.coleta__acoes button + button, .coleta__replay button + button, .coleta__revisao-acoes button + button, .coleta__dados-acoes button + button { background: transparent; color: inherit; }
+.coleta__palco p { position: relative; z-index: 1; padding: 12px; color: #cbd5e1; text-align: center; }
+.coleta__countdown { position: relative; z-index: 2; display: grid; width: 88px; aspect-ratio: 1; place-items: center; border-radius: 50%; background: #0f766e; color: white; font-size: 3.5rem; }
+.coleta__acoes, .coleta__replay, .coleta__revisao-acoes, .coleta__dados-acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.coleta__acoes button, .coleta__replay button, .coleta__revisao-acoes button, .coleta__dados-acoes button, .coleta__modos button, .coleta__aviso-tecnico button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border: 1px solid #0f766e; border-radius: 10px; background: #0f766e; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+.coleta__acoes .coleta__botao-secundario, .coleta__revisao-acoes .coleta__botao-secundario { background: white; color: #0f766e; }
+.coleta__acoes button:disabled { cursor: not-allowed; opacity: .55; }
+.coleta__voltar { min-height: 44px; border: 0; background: transparent; color: #0f766e; font: inherit; font-weight: 700; cursor: pointer; }
 .coleta__status, .coleta__mensagem { min-height: 24px; color: #cbd5e1; }
-.coleta__revisao { grid-template-columns: minmax(180px, 1fr) minmax(220px, 1fr); }
-.coleta__revisao h2 { margin: 4px 0; }
+.coleta__revisao { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .coleta__revisao > :first-child, .coleta__qualidade, .coleta__nota, .coleta__revisao > label, .coleta__revisao-acoes { grid-column: 1 / -1; }
-.coleta__revisao .visualizador-mao-3d { min-height: 260px; }
-.coleta__qualidade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0; }
-.coleta__qualidade div { padding: 12px; border-radius: 10px; background: #f8fafc; }
+.coleta__revisao .visualizador-mao-3d { min-height: 240px; }
+.coleta__qualidade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.coleta__qualidade div { min-width: 0; padding: 12px; border-radius: 10px; background: #f8fafc; }
 .coleta__qualidade dt { color: #64748b; font-size: .8rem; }
-.coleta__qualidade dd { margin: 4px 0 0; font-weight: 800; }
+.coleta__qualidade dd { margin: 4px 0 0; font-weight: 800; overflow-wrap: anywhere; }
 .coleta__nota, .coleta__dados p, .coleta__resumo { color: #64748b; }
 .coleta__privacidade { display: flex; align-items: center; gap: 8px; color: #0f766e !important; }
-@media (max-width: 640px) { .pagina-coleta { padding-inline: 14px; } .coleta__form, .coleta__revisao { grid-template-columns: 1fr; } .coleta__form small, .coleta__tentativas { grid-column: auto; } .coleta__qualidade { grid-template-columns: repeat(2, 1fr); } .coleta__palco { min-height: 240px; } }
+.coleta__dados { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .pagina-coleta { padding: 16px 14px 56px; }
+  .coleta__modos, .coleta__form, .coleta__revisao { grid-template-columns: minmax(0, 1fr); }
+  .coleta__form small, .coleta__tentativas { grid-column: auto; }
+  .coleta__qualidade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .coleta__palco { min-height: 220px; aspect-ratio: 3 / 4; }
+  .coleta__acoes button, .coleta__replay button, .coleta__revisao-acoes button, .coleta__modos button { flex: 1 1 100%; }
+}

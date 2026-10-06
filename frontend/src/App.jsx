@@ -4,6 +4,7 @@ import PaginaAprender from './paginas/PaginaAprender'
 import PaginaPraticar from './paginas/PaginaPraticar'
 import PaginaQuiz from './paginas/PaginaQuiz'
 import PaginaColeta from './coleta/PaginaColeta'
+import PaginaJogo from './jogos/PaginaJogo'
 
 function RotasAplicacao() {
   const location = useLocation()
@@ -15,6 +16,7 @@ function RotasAplicacao() {
       <Route path="/praticar" element={<PaginaPraticar />} />
       <Route path="/quiz" element={<PaginaQuiz />} />
       <Route path="/laboratorio/coleta" element={<PaginaColeta />} />
+      <Route path="/laboratorio/jogo" element={<PaginaJogo />} />
       <Route path="*" element={<Navigate to="/aprender" replace />} />
     </Routes>
     {!experimental && <BarraNavegacao />}
